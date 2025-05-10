@@ -78,7 +78,7 @@ def _perform_auth_request(
         session.proxies = proxies
     session.headers={"User-Agent": USER_AGENT, 'Content-type': 'application/x-www-form-urlencoded'}
 
-    res = session.post(AUTH_URL, data=data, verify=True)
+    res = session.post(AUTH_URL, data=data, verify=False) # False: if you have SSL Error, Else back it to True
 
     return google.parse_auth_response(res.text)
 
